@@ -1,3 +1,6 @@
+import messagesReducer from "./messagesReducer";
+import profileReducer from "./profileReducer";
+
 const store = {
   _state: {
     profilePage: {
@@ -103,10 +106,10 @@ const store = {
 
     },
   },
+
   _callSubscriber() {
     console.log('render');
   },
-
   getState() {
     return this._state
   },
@@ -115,57 +118,11 @@ const store = {
   },
 
   dispatch(action) {
-    switch (action.type) {
-
-      case 'ADD-NEW-POST':
-        if (this._state.profilePage.newPostText.length > 0) {
-          this._state.profilePage.posts.push({
-            id: this._state.profilePage.posts.reduce( (max, curr) => {
-              return Math.max(max, curr.id);
-            }, 0) + 1,
-            text: this._state.profilePage.newPostText,
-            date: new Date().getTime(),
-            likes: 0,
-          });
-          this._callSubscriber();
-          this._state.profilePage.newPostText = '';
-        }
-        break;
-
-      case 'UPDATE-NEW-POST-TEXT':
-        this._state.profilePage.newPostText = action.text;
-        this._callSubscriber();
-        break;
-
-      case 'ADD-NEW-MESSAGE':
-        if (this._state.messagesPage.newMessageText.length > 0) {
-          this._state.messagesPage.messages.push({
-            id: this._state.messagesPage.messages.reduce( (max, curr) => {
-              return Math.max(max, curr.id);
-            }, 0) + 1,
-            text: this._state.messagesPage.newMessageText,
-            fromUser: true,
-            date: new Date().getTime(),
-          });
-          this._callSubscriber();
-          this._state.messagesPage.newMessageText = '';
-        }
-        break;
-
-      case 'UPDATE-NEW-MESSAGE-TEXT':
-        this._state.messagesPage.newMessageText = action.text;
-        this._callSubscriber();
-        break;
-
-      default: break;
-    }
+    this._state.profilePage = profileReducer(this._state.profilePage, action);
+    this._state.messagesPage = messagesReducer(this._state.messagesPage, action);
   },
 
 };
 
 export default store
 
-export const addNewPostCreator = () => ({ type: 'ADD-NEW-POST' });
-export const updateNewPostTextCreator = (text) => ({ type: 'UPDATE-NEW-POST-TEXT', text: text });
-export const addNewMessageCreator = () => ({ type: 'ADD-NEW-MESSAGE' });
-export const updateNewMessageTextCreator = (text) => ({ type: 'UPDATE-NEW-MESSAGE-TEXT', text: text });
