@@ -1,0 +1,26 @@
+.messageWrapper {
+    max-width: 80%;
+    width: max-content;
+    margin: 20px 20px;
+    padding: 5px 10px;
+    border: 2px solid #002aff;
+    border-radius: 6px;
+    position: relative;
+}
+
+.messageWrapper.messageRight {
+    align-self: flex-end;
+}
+
+.messageTime {
+    position: absolute;
+    right: -40px;
+    top: 0;
+    opacity: .8;
+    font-size: .8rem;
+}
+
+.messageWrapper.messageRight > .messageTime {
+    left: -40px;
+    right: unset;
+}

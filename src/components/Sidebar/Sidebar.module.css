@@ -1,0 +1,15 @@
+.pageSidebar {
+    grid-area: sidebar;
+    background-color: #d3d3d3;
+}
+
+.sidebarLink {
+    width: 100px;
+}
+
+.active, .active:focus {
+    background-color: #43839f;
+}
+.active:hover {
+    background-color: #3d7b93;
+}

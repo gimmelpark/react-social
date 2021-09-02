@@ -1,0 +1,18 @@
+.App {
+  display: grid;
+
+  grid-template-rows: 60px calc(100vh - 60px);
+  grid-template-columns: 2fr 10fr;
+
+  grid-template-areas:
+    "header header"
+    "sidebar content";
+}
+
+.App-content-wrapper {
+  grid-area: content;
+}
+
+
+
+

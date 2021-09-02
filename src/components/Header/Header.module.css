@@ -1,0 +1,4 @@
+.pageHeader {
+    grid-area: header;
+    background-color: #43839f;
+}
