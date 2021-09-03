@@ -2,7 +2,7 @@ import React from 'react'
 import classes from './DialogMessages.module.css'
 
 import DialogMessage from "./DialogMessage/DialogMessage";
-import {addNewMessageCreator, updateNewMessageTextCreator} from "../../../redux/store";
+import {addNewMessageCreator, updateNewMessageTextCreator} from "../../../redux/messagesReducer";
 
 function DialogMessages(props) {
 

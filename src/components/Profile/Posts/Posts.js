@@ -1,7 +1,7 @@
 import React from 'react';
 import Post from "./Post/Post";
 
-import { addNewPostCreator, updateNewPostTextCreator } from "../../../redux/store";
+import { addNewPostCreator, updateNewPostTextCreator } from "../../../redux/profileReducer";
 
 const Posts = function (props) {
 

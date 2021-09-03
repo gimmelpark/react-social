@@ -5,7 +5,7 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
 
-import store from './redux/store';
+import store from './redux/reduxStore';
 
 
 const renderEntireTree = () => ReactDOM.render(
