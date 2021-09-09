@@ -2,18 +2,8 @@ import React from 'react'
 import classes from './DialogMessages.module.css'
 
 import DialogMessage from "./DialogMessage/DialogMessage";
-import {addNewMessageCreator, updateNewMessageTextCreator} from "../../../redux/messagesReducer";
 
 function DialogMessages(props) {
-
-  const sendMessage = () => {
-    props.dispatch( addNewMessageCreator() );
-  };
-
-  const onMessageChange = (e) => {
-    props.dispatch( updateNewMessageTextCreator(e.target.value) );
-  };
-
   return (
     <div className={classes.messages}>
       <div className={classes.messagesBox}>
@@ -21,7 +11,7 @@ function DialogMessages(props) {
         <div className={classes.messagesWrapper}>
           <div className={classes.messagesList}>
             {
-              props.messagesPage.messages.map( message => (
+              props.messages.map( message => (
                 <DialogMessage key={ message.id } message={ message } />
               ))
             }
@@ -30,13 +20,13 @@ function DialogMessages(props) {
 
         <div className={classes.newMessage}>
           <input
-            onChange={ onMessageChange }
-            value={ props.messagesPage.newMessageText }
+            onChange={ (e) => props.onMessageChange(e.target.value) }
+            value={ props.newMessageText }
             type="text"
             placeholder="Enter your message"
           />
           <button
-            onClick={ sendMessage }
+            onClick={ props.sendMessage }
             type="button"
           >&gt;</button>
         </div>

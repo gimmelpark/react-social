@@ -1,8 +1,8 @@
 import React from 'react';
 import classes from './Messages.module.css'
 
-import DialogsList from "./DialogsList/DialogsList";
-import DialogMessages from "./DialogMessages/DialogMessages";
+import DialogMessagesContainer from "./DialogMessages/DialogMessagesContainer";
+import DialogsListContainer from "./DialogsList/DialogsListContainer";
 
 function Messages(props) {
 
@@ -11,10 +11,9 @@ function Messages(props) {
       <h5 className="mt-2 mx-3">Your dialogs:</h5>
 
       <div className={ classes.messagesContent }>
-        <DialogsList dialogs={ props.messagesPage.dialogs }/>
-        <DialogMessages
-          messagesPage={ props.messagesPage }
-          dispatch={ props.dispatch }
+        <DialogsListContainer dialogs={ props.messagesPage.dialogs }/>
+        <DialogMessagesContainer messagesPage={ props.messagesPage }
+                                 dispatch={ props.dispatch }
         />
       </div>
 

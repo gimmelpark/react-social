@@ -1,18 +1,8 @@
 import React from 'react';
 import Post from "./Post/Post";
 
-import { addNewPostCreator, updateNewPostTextCreator } from "../../../redux/profileReducer";
 
 const Posts = function (props) {
-
-  const addPost = () => {
-    props.dispatch( addNewPostCreator() );
-  };
-
-  const onNewPostChange = (e) => {
-    props.dispatch( updateNewPostTextCreator(e.target.value) );
-  };
-
   return (
     <div className={"mt-3 mx-3"}>
 
@@ -20,14 +10,17 @@ const Posts = function (props) {
 
       <div>
         <div>
-          <textarea value={ props.profilePage.newPostText } onChange={ onNewPostChange }/>
+          <textarea value={ props.newPostText }
+                    onChange={ (e) => props.onNewPostChange(e.target.value) }/>
         </div>
-        <button onClick={ addPost } className={"btn btn-success btn-sm"}>Add post</button>
+        <button onClick={ props.addPost }
+                className={"btn btn-success btn-sm"}
+        >Add post</button>
       </div>
 
       <div>
         {
-          props.profilePage.posts.sort( (a, b) => b.date - a.date )
+          props.posts.sort( (a, b) => b.date - a.date )
             .map( post => <Post key={ post.id } post={ post } /> )
         }
       </div>
